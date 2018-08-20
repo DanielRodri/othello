@@ -1,5 +1,4 @@
 const express = require('express');
-const rules = require('../modules/rules.js')
 const app = express();
 const cors = require('cors')
 
@@ -19,26 +18,3 @@ app.use('/api/game',require('./routes/rules.routes'));
 app.listen(app.get('port'), () => {
     console.log("App now running on port", app.get('port'));
   });
-
-
-
-
-
-/*app.get('/api/rules', function (req, res) {
-  res.send(rules.sendHelp());
-  console.log("asd");
-});
-
-app.post('/api/rules', function(req,res){
-    //posX= req.body.posX;
-    //posY= req.body.posY;
-
-    console.log("recibí lo que necesitaba ");
-    res.json({hola:"hola"})
-});
-
-function handleError(res, reason, message, code) {
-    console.log("ERROR: " + reason);
-    res.status(code || 500).json({"error": message});
-  }*/
-
