@@ -4,8 +4,9 @@ let file = editJsonFile(`${__dirname}/../../Data.json`);
 var methods = require('../../modules/reversie')
 const rulesCtrl = {}
 
-rulesCtrl.getMatrix = (req,res)=>{
-    res.json(file.get("matrix"));
+rulesCtrl.getMatrix = async (req,res)=>{
+    let matrix = await (file.get("matrix"))
+    res.json(matrix);
 }
 
 rulesCtrl.tryMove = (req,res)=>{
@@ -24,13 +25,18 @@ rulesCtrl.tryMove = (req,res)=>{
     }
     res.json(object.matrix);
 }
-rulesCtrl.createMatrix= (req,res)=>{
-    let matrix = methods.crearTablero(req.body.size);
-    file.set("matrix",matrix)
-    file.set("actualPlayer",1)
-    file.set("size",req.body.size)
-    file.save()
-    res.json(matrix)
-    //res.json("se creo el tablero, mensaje desde servidor")
+rulesCtrl.getPlayers = async (req,res)=>{
+    let players = await (file.get("players"))
+    res.json(players);
+}
+rulesCtrl.createMatrix= async (req,res)=>{
+    let matrix = await methods.crearTablero(req.body.size);
+    await file.set("matrix",matrix)
+    await file.set("actualPlayer",1)
+    await file.set("players",{player1:{name:req.body.player1},player2:{name:req.body.player2}})
+    await file.set("size",req.body.size)
+    await file.save()
+    //res.json(matrix)
+    res.json("se creo el tablero, mensaje desde servidor")
 }
 module.exports = rulesCtrl;
