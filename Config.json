@@ -1,0 +1,27 @@
+{
+  "boardStyle": {
+    "display": "flex",
+    "background-size": "200px 200px",
+    "flex-wrap": "wrap",
+    "width": "200px",
+    "height": "200px",
+    "background": "yellow",
+    "background-image": "url(https://media.giphy.com/media/HWfmwxt3QXRL2/giphy.gif)"
+  },
+  "pieceStyle": {
+    "PiecePlace": {
+      "display": "flex",
+      "flex-wrap": "wrap",
+      "width": "50px",
+      "height": "50px",
+      "border": "2px solid pink",
+      "text-aling": "center"
+    },
+    "Piece": {
+      "width": "100%",
+      "height": "100%",
+      "word-wrap": "break-word",
+      "clear": "both"
+    }
+  }
+}
